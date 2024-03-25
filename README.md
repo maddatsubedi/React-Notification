@@ -1,70 +1,192 @@
-# Getting Started with Create React App
+<br>
+<h1 align=center>
+<span> React Notification </span>
+<img align="center" src="./public/favicon.png" alt="" width="50" height="50">
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**React Notification is a customizable notification component for React applications. It provides an easy way to add dynamic notifications with various options for customization and a rich features set, allowing you to enhance user experience in your projects.**
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+You can access the live demo of this React Notification on Netlify:
+<br>
+Netlify: [React Notification Demo](https://ritoncharlox-react-notification.netlify.app/)
 
-### `npm start`
+## How to Use
+1. **Add a new task**: Type your task title and description into the input fields provided and press Enter or click the Add button.
+2. **Edit a task**: Click on the Edit button next to the task you want to edit. Update the title and description as needed in the input fields and click the Save button.
+3. **Mark a task as completed**: Click on the checkbox next to the task.
+4. **Delete a task**: Click on the Delete button next to the task.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Add notifications with various statuses such as success, failure, and warning.
+- Customize notification appearance including text, status, background color, duration, and more.
+- Support for custom icons to accompany notifications.
+- Option to have fixed notifications that do not automatically clear.
+- Close button rotation for enhanced interactivity.
+- Easily integrate into existing React applications.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+&emsp; ![React](https://img.shields.io/badge/react.js-%23563D7C.svg?style=for-the-badge&logo=react&logoColor=white)
+<br>
+&emsp; ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+<br>
+&emsp; ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Uasge
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To use the React Notification component in your React application, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Download the `Notification` folder from the repository. The folder structure should be as follows:
+    ```
+    ├── node_modules
+    ├── public
+    ├── src
+    │   ├── components
+    │   │   ├── Navbar
+    │   │   ├── Notification
+    │   │   │   ├── Notificaiton.css
+    │   │   │   ├── Notificaiton.js
+    │   │   │   ├── NotificationContext.js
+    │   │   │   └── notificationExample.js
+    │   │   └── NotificationPage
+    │   ├── App.js
+    │   ├── index.js
+    │   └── app.css
+    ├── .gitignore
+    ├── LICENSE
+    ├── README.md
+    ├── package.json
+    └── package-lock.json
+    ```
+2. In your project, import `NotificationsProvider` from `NotificationContext.js` to manage notifications context:
+    ```javascript
+    import { NotificationsProvider } from './components/Notification/NotificationContext';
+    ```
+3. Import the Notification component from Notification.js to use it in your application:
+    ```javascript
+    import Notification from './components/Notification/Notification';
+    ```
+4. Wrap your application in `NotificationsProvider` to provide notification context. Also, include the `Notification` component anywhere inside the `App` component to display notifications:
+    ```javascript
+    import React from 'react';
+    import { NotificationsProvider } from './components/Notification/NotificationContext';
+    import Notification from './components/Notification/Notification';
 
-### `npm run eject`
+    const App = () => {
+    return (
+        <NotificationsProvider>
+        <div className="App">
+            {/* Include the Notification component */}
+            <Notification position="topCenter" />
+            {/* Your other components */}
+        </div>
+        </NotificationsProvider>
+    );
+    };
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    export default App;
+    ```
+5. Place the `Notification` component wherever you want notifications to appear in your application. You can specify the position using the `position` prop. By default, notifications appear at the top center:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```javascript
+    <Notification position="topCenter" />
+    ```
+    Available position options:
+    ```topCenter
+    bottomCenter
+    topLeft
+    topRight
+    bottomLeft
+    bottomRight
+    ```
+6. Please replace `'./components/Notification/NotificationContext'` and `'./components/Notification/Notification'` with the actual relative paths to the `NotificationContext.js` and `Notification.js` files in your project. Additionally, ensure that the folder structure and file names match those mentioned in step 1.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Sending Notifications
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To send notifications using the React Notification component, follow these steps:
 
-## Learn More
+1. Import the `useNotifications` custom hook from `NotificationContext.js` to access the notification functionality:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```javascript
+    import { useNotifications } from '../Notification/NotificationContext';
+    ```
+2. Inside the component, initialize the addNotification function using the useNotifications hook:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```javascript
+    const { addNotification } = useNotifications();
+    ```
+3. Use the addNotification function to send notifications with desired configurations. The format for adding notifications is as follows:
+    ```javascript
+    addNotification(
+        {
+            title: "Title", // Default is null
+            description: "Description", // Default is null
+            text: "Text", // // Default is null
+            status: "success" || "failed" || "warning", // Default is null
+            background: "purple" || "#800080", // Can use any color name or hex code
+            color: "white" || "#FFFFFF", // Can use any color name or hex code
+            icon: "✅" || <FaCheckCircle />, // Can be a string representing a unicode character or a React component
+            duration : '5s', // Default is 5s
+            iconColor: "white" || "#FFFFFF", // Can use any color name or hex code
+            textsColor: "white" || "#FFFFFF", // Can use any color name or hex code
+            titleColor: "white" || "#FFFFFF", // Can use any color name or hex code
+            textColor: "white" || "#FFFFFF", // Can use any color name or hex code
+            descriptionColor: "white" || "#FFFFFF", // Can use any color name or hex code
+            fixed: true, // If true, the notification remains fixed and does not automatically clear
+            progressColor: "gray" || "#808080", // Can use any color name or hex code
+            closeButtonRotate: true, // If true, the close button rotates on hover
+        }
+    );
+    ```
 
-### Code Splitting
+4. Use the `addNotification` function from useNotifications to add notifications with desired configurations. Example usage:
+    ```javascript
+    import React from 'react';
+    import { useNotifications } from './components/Notification/NotificationContext';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    const ExampleComponent = () => {
+    const { addNotification } = useNotifications();
 
-### Analyzing the Bundle Size
+    const handleClick = () => {
+        addNotification({
+        title: "Title",
+        description: "Description",
+        text: "Text",
+        status: "success",
+        background: "purple",
+        color: "white",
+        icon: "✅",
+        duration: '5s',
+        iconColor: "white",
+        titleColor: "white",
+        textColor: "white",
+        descriptionColor: "white",
+        fixed: true,
+        progressColor: "gray",
+        closeButtonRotate: true,
+        });
+    };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    return (
+        <button onClick={handleClick}>Add Notification</button>
+        );
+    };
 
-### Making a Progressive Web App
+    export default ExampleComponent;
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+Please make sure to replace `'../Notification/NotificationContext'` with the actual relative path to the `NotificationContext.js` file in your project. Additionally, ensure that the `useNotifications` hook and `addNotification` function are correctly imported and used within your components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Contributions are welcome! If you'd like to contribute to this project, feel free to fork this repository, make your changes, and submit a pull request.
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
