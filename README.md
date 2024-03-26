@@ -12,13 +12,6 @@ You can access the live demo of this React Notification on Netlify:
 <br>
 Netlify: [React Notification Demo](https://ritoncharlox-react-notification.netlify.app/)
 
-## How to Use
-1. **Add a new task**: Type your task title and description into the input fields provided and press Enter or click the Add button.
-2. **Edit a task**: Click on the Edit button next to the task you want to edit. Update the title and description as needed in the input fields and click the Save button.
-3. **Mark a task as completed**: Click on the checkbox next to the task.
-4. **Delete a task**: Click on the Delete button next to the task.
-
-
 ## Features
 
 - Add notifications with various statuses such as success, failure, and warning.
@@ -103,7 +96,16 @@ To use the React Notification component in your React application, follow these 
     bottomLeft
     bottomRight
     ```
-6. Please replace `'./components/Notification/NotificationContext'` and `'./components/Notification/Notification'` with the actual relative paths to the `NotificationContext.js` and `Notification.js` files in your project. Additionally, ensure that the folder structure and file names match those mentioned in step 1.
+
+6. Please replace `'./components/Notification/NotificationContext'` and `'./components/Notification/Notification'` with the actual relative paths to the `NotificationContext.js` and `Notification.js` files in your project. Additionally, ensure that the folder structure and file names match those mentioned in step 1.  
+
+### Dependencies
+- **uuid**: This library is used to generate unique identifiers for notifications.
+
+    You can install it via npm:
+    ```bash
+    npm install uuid
+    ```
 
 ## Sending Notifications
 
@@ -178,7 +180,6 @@ To send notifications using the React Notification component, follow these steps
 
     export default ExampleComponent;
     ```
-
 
 Please make sure to replace `'../Notification/NotificationContext'` with the actual relative path to the `NotificationContext.js` file in your project. Additionally, ensure that the `useNotifications` hook and `addNotification` function are correctly imported and used within your components.
 
