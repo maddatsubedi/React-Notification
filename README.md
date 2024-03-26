@@ -41,8 +41,8 @@ To use the React Notification component in your React application, follow these 
     │   ├── components
     │   │   ├── Navbar
     │   │   ├── Notification
-    │   │   │   ├── Notificaiton.css
-    │   │   │   ├── Notificaiton.js
+    │   │   │   ├── Notificatioon.css
+    │   │   │   ├── Notification.js
     │   │   │   ├── NotificationContext.js
     │   │   │   └── notificationExample.js
     │   │   └── NotificationPage
