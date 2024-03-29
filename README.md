@@ -20,6 +20,13 @@ Netlify: [React Notification Demo](https://ritoncharlox-react-notification.netli
 - Option to have fixed notifications that do not automatically clear.
 - Close button rotation for enhanced interactivity.
 - Easily integrate into existing React applications.
+- Flexible positioning options for notifications, including:
+    - topCenter
+    - bottomCenter
+    - topLeft
+    - topRight
+    - bottomLeft
+    - bottomRight
 
 ## Technologies Used
 
