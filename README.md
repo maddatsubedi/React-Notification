@@ -10,7 +10,7 @@
 
 You can access the live demo of this React Notification on Netlify:
 <br>
-Netlify: [React Notification Demo](https://ritoncharlox-react-notification.netlify.app/)
+Netlify: [React Notification Demo](https://react-multiapp.netlify.app/notification)
 
 ## Features
 
